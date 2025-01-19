@@ -1,0 +1,4 @@
+In Objective-C, a tricky error can arise when dealing with `NSDecimalNumber` and its comparison methods.  The `compare:` method returns an `NSComparisonResult` (NSOrderedAscending, NSOrderedSame, NSOrderedDescending), but relying solely on `==` for equality checks can lead to unexpected behavior. Because `NSDecimalNumber` is an immutable object, two `NSDecimalNumber` objects with the same numerical value are not necessarily equal under the `==` operator; they need to be compared using the `compare:` method. This is because `==` checks for pointer equality, not value equality. For instance, consider the following:
+
+```objectivec
+NSDecimalNumber *num1 = [NSDecimalNumber decimalNumberWithString:@
